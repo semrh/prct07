@@ -1,12 +1,15 @@
 require "./lib/gcd.rb"
 
 #############################################################
-# Clase Fraccion de la practica #6 de LPP                   #
+# Clase Fraccion de la practica #7 de LPP                   #
 #############################################################
 
 class Fraccion 
   
     attr_reader :numer, :denomin
+    
+    # Incluimos el módulo Comparable
+    include Comparable
   
     def initialize(n,d) 
       @numer, @denomin = n, d
