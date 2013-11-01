@@ -65,19 +65,17 @@ class Fraccion
 	def absoluto
 		@numer = @numer.abs
 		@denomin = @denomin.abs
-		# Fraccion.new(n,d)
+		Fraccion.new(@numer,@denomin)
 	end
   
 	#Obtiene la fraccion reciproca a la implicita
 	def reciprocal
-		aux = @numer
-		@numer = @denomin
-		@denomin = aux
+		Fraccion.new(@denomin,@numer)
 	end
   
 	# Funcion que calcula la fraccion opuesta
 	def opuesto
-		@numer = -@numer
+		Fraccion.new(-@numer,@denomin)
 	end
   
 	#############################################################
@@ -125,8 +123,13 @@ class Fraccion
 		aux1 = self.numer * other.denomin				#Multiplicamos el numerador de la primera entre el denominador de la segunda
 		aux2 = self.denomin * other.numer				#Multiplicamos el denominador de la primera entre el numerador de la segunda
 		resto = aux1%aux2								#Obtenemos el Resto de la fraccion resultante
-	end  
-  
+	end
+	
+	def <=>(other)
+		self.to_f <=> other.to_f
+	end
+	
+=begin
 	# Comprobamos si la matriz implicita es menor que la recibida
 	def <(other)
 		if (self.numer/self.denomin) < (other.numer/other.denomin) 
@@ -162,5 +165,7 @@ class Fraccion
 			false
 		end
     end
+    
+=end
 
 end
